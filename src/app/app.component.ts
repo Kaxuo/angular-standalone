@@ -4,9 +4,8 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './shared/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './shared/loading/loading.component';
-import { LoadingService } from './services/loading.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +18,12 @@ import { LoadingService } from './services/loading.service';
     HeroComponent,
     RouterOutlet,
     FooterComponent,
-    HttpClientModule,
     LoadingComponent,
+    HttpClientModule,
   ],
-  providers: [LoadingService],
+  providers: [],
 })
 export class AppComponent {
   title = 'standalone';
-  constructor(public loadingService: LoadingService) {}
+  constructor() {}
 }

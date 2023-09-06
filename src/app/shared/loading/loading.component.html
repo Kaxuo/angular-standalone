@@ -1,5 +1,4 @@
->
-<div class="loading">
+<div class="loading" *ngIf="loadingService.isLoading | async">
   <div class="mosaic-loader">
     <div class="cell d-0"></div>
     <div class="cell d-1"></div>

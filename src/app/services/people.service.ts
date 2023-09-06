@@ -7,9 +7,8 @@ import { Results } from '../Models/Results';
   providedIn: 'root',
 })
 export class PeopleService {
-  url: string = 'https://randomuser.me/api/?results=1000';
+  url: string = 'https://randomuser.me/api/?results=25';
   constructor(private http: HttpClient) {}
-
   getPeople(): Observable<Results> {
     return this.http.get<Results>(`${this.url}`);
   }
