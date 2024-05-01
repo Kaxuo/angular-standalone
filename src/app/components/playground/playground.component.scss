@@ -1,0 +1,14 @@
+.double-table {
+  display: grid;
+  background-color: grey;
+  grid-template-columns: 900px 1fr;
+
+  .first-table {
+    background-color: red;
+  }
+  .second-table {
+    background-color: yellow;
+    display: block;
+    overflow-x: scroll;
+  }
+}

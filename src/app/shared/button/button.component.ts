@@ -8,10 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() counterC: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Output() increm: EventEmitter<any> = new EventEmitter();
-  ngOnInit() {
-    console.log(this.counterC);
-  }
 
   increment() {
     this.counterC += 1;

@@ -11,7 +11,9 @@ import { ButtonComponent } from 'src/app/shared/button/button.component';
 })
 export class HeroComponent {
   counterP: number = 2;
-  incr(event: any) {
+
+  ngOnInit() {}
+  incr(event: number) {
     console.log(event);
   }
 }

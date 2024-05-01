@@ -4,6 +4,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { PlaygroundComponent } from './components/playground/playground.component';
 
 export const routes: Routes = [
   {
@@ -23,5 +24,9 @@ export const routes: Routes = [
   {
     path: 'pricing',
     component: PricingComponent,
+  },
+  {
+    path: 'playground',
+    component: PlaygroundComponent,
   },
 ];
