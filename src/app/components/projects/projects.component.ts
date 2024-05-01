@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PeopleService } from 'src/app/services/people.service';
-import { Observable, map, of, shareReplay, startWith } from 'rxjs';
-import { Person } from 'src/app/Models/Person';
-import { Results } from 'src/app/Models/Results';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PeopleService} from 'src/app/services/people.service';
+import {Observable, map, of, shareReplay, startWith} from 'rxjs';
+import {Person} from 'src/app/Models/Person';
+import {Results} from 'src/app/Models/Results';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-projects',
@@ -19,7 +19,10 @@ export class ProjectsComponent {
   options: Person[];
   filteredPeople$: Observable<Person[]>;
   formGroup: FormGroup;
-  constructor(private peopleService: PeopleService, private fb: FormBuilder) {}
+  constructor(
+    private peopleService: PeopleService,
+    private fb: FormBuilder,
+  ) {}
 
   ngOnInit() {
     this.people$ = this.peopleService.getPeople().pipe(
@@ -28,7 +31,7 @@ export class ProjectsComponent {
         this.options = res.results;
         this.initForm();
         return res.results;
-      })
+      }),
     );
   }
 
@@ -45,11 +48,9 @@ export class ProjectsComponent {
       ?.valueChanges.pipe(startWith(''))
       .subscribe((searchTerm: string) => {
         this.filteredPeople$ = of(
-          this.options.filter((el) =>
-            `${el.name.first} ${el.name.last}`
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase())
-          )
+          this.options.filter(el =>
+            `${el.name.first} ${el.name.last}`.toLowerCase().includes(searchTerm.toLowerCase()),
+          ),
         );
       });
   }
