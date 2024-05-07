@@ -1,4 +1,4 @@
-export interface Person {
+export type Person = {
   gender: string;
   name: {
     title: string;
@@ -12,4 +12,4 @@ export interface Person {
     thumbnail: string;
   };
   nat: string;
-}
+};

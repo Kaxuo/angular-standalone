@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PeopleService} from 'src/app/services/people.service';
-import {Observable, map, of, shareReplay, startWith} from 'rxjs';
-import {Person} from 'src/app/Models/Person';
-import {Results} from 'src/app/Models/Results';
+import {Observable, map, of, startWith} from 'rxjs';
+import {Person} from 'src/app/Types/Person';
+import {Results} from 'src/app/Types/Results';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
@@ -26,7 +26,6 @@ export class ProjectsComponent {
 
   ngOnInit() {
     this.people$ = this.peopleService.getPeople().pipe(
-      shareReplay(),
       map((res: Results) => {
         this.options = res.results;
         this.initForm();

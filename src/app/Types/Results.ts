@@ -1,5 +1,5 @@
 import { Person } from './Person';
 
-export interface Results {
+export type Results =  {
   results: Person[];
 }

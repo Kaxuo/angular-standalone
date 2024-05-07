@@ -1,10 +1,11 @@
-import { Routes } from '@angular/router';
-import { HeroComponent } from './components/hero/hero.component';
-import { PricingComponent } from './components/pricing/pricing.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { LoaderInterceptor } from './interceptors/loader.interceptor';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { PlaygroundComponent } from './components/playground/playground.component';
+import {Routes} from '@angular/router';
+import {HeroComponent} from './components/hero/hero.component';
+import {PricingComponent} from './components/pricing/pricing.component';
+import {ProjectsComponent} from './components/projects/projects.component';
+import {LoaderInterceptor} from './interceptors/loader.interceptor';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {PlaygroundComponent} from './components/playground/playground.component';
+import {SignalComponent} from './components/signal/signal.component';
 
 export const routes: Routes = [
   {
@@ -28,5 +29,10 @@ export const routes: Routes = [
   {
     path: 'playground',
     component: PlaygroundComponent,
+  },
+  {
+    path: 'signal',
+    component: SignalComponent,
+    providers: [provideHttpClient(withInterceptors([LoaderInterceptor]))],
   },
 ];
