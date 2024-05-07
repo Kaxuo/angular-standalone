@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {TodosWithSignalService} from 'src/app/services/todo-with-signal.service';
 import {Observable, Subject, take, takeUntil} from 'rxjs';
 import {Todo} from 'src/app/Types/Todo';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-signal',
