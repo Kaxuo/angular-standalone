@@ -6,7 +6,7 @@ import {Todo} from '../Types/Todo';
 @Injectable({
   providedIn: 'root',
 })
-export class TodosWithSignalService {
+export class TodoService {
   url: string = 'https://jsonplaceholder.typicode.com/todos';
   http = inject(HttpClient);
   todos = signal<Todo[]>([]);
