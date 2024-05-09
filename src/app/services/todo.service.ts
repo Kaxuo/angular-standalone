@@ -39,7 +39,7 @@ export class TodoService {
     }
     this.todos.update(todos => {
       todos[index] = post;
-      return todos;
+      return [...todos];
     });
   };
 }

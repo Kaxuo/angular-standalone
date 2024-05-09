@@ -1,7 +1,7 @@
-import {Component, inject} from '@angular/core';
+import {Component, Signal, computed, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TodoService} from 'src/app/services/todo.service';
-import {Observable, Subject, of, shareReplay, startWith, take, takeUntil, tap} from 'rxjs';
+import {Observable, Subject, shareReplay, startWith, take, takeUntil, tap} from 'rxjs';
 import {Todo} from 'src/app/Types/Todo';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
@@ -20,7 +20,7 @@ export class SignalComponent {
 
   formGroup: FormGroup;
   todos$: Observable<Todo[]>;
-  filteredTodos: Todo[];
+  filteredTodos: Signal<Todo[]>;
 
   ngOnInit() {
     this.todos$ = this.todoService.getPosts().pipe(
@@ -41,7 +41,9 @@ export class SignalComponent {
       .get('search')
       ?.valueChanges.pipe(startWith(''))
       .subscribe((searchTerm: string) => {
-        this.filteredTodos = this.todos().filter(x => x.title.includes(searchTerm));
+        this.filteredTodos = computed(() => {
+          return this.todos().filter(x => x.title.includes(searchTerm));
+        });
       });
   }
 
