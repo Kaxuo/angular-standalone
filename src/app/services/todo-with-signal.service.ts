@@ -19,6 +19,10 @@ export class TodosWithSignalService {
     return this.http.post<Todo>(this.url, post).pipe(tap(this._upsertTodo));
   }
 
+  updatePost(post: Todo) {
+    return this.http.put<Todo>(`${this.url}/${post.id}`, post).pipe(tap(this._upsertTodo));
+  }
+
   deletePost(id: number) {
     return this.http.delete<Todo>(`${this.url}/${id}`).pipe(
       tap(() => {
@@ -33,10 +37,12 @@ export class TodosWithSignalService {
       this.todos.set([post, ...this.todos()]);
       return;
     }
-    this.todos.mutate(todos => (todos[index] = post));
+    this.todos.update(todos => {
+      todos[index] = post;
+      return todos;
+    });
   };
 }
-
 
 // AddProduct(_product: SalesProduct) {
 //   this.productlist.mutate(previous => previous.push(_product))

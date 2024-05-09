@@ -39,6 +39,16 @@ export class SignalComponent {
     this.todoService.createPost(item).pipe(takeUntil(this.destroy$)).subscribe();
   }
 
+  updateFirstItem() {
+    const item: Todo = {
+      id: 1,
+      userId: Math.random() * 100,
+      title: 'First item updated',
+      completed: false,
+    };
+    this.todoService.updatePost(item).pipe(takeUntil(this.destroy$)).subscribe();
+  }
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
