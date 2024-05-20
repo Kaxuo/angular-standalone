@@ -1,0 +1,12 @@
+.card {
+  transition: scale 500ms ease-in-out;
+  &:hover {
+    scale: 1.2;
+  }
+  &:hover + .card {
+    scale: 1.1;
+  }
+  &:has(+ .card:hover) {
+    scale: 1.1;
+  }
+}

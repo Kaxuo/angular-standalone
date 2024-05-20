@@ -10,3 +10,11 @@
     min-width: fit-content;
   }
 }
+
+.single-item{
+  transition:op
+}
+
+.item-list:has(.single-item:hover) .single-item:not(:hover) {
+  opacity: 0.5;
+}
