@@ -21,7 +21,6 @@ export class DialogComponent {
 
   event(e: Event) {
     const html = e.target as HTMLElement;
-    console.log(html.className);
     html.className == 'modal' && this.closeModal();
   }
 }
