@@ -1,0 +1,18 @@
+<button
+  (click)="showModal()"
+  type="button"
+  class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+  Open Modal
+</button>
+
+<dialog class="modal" #simpleDialog (click)="event($event)">
+  <div class="content">
+    <title>title here</title>
+    <button
+      (click)="closeModal()"
+      type="button"
+      class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+      close
+    </button>
+  </div>
+</dialog>

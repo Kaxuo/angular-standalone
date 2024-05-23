@@ -6,6 +6,7 @@ import {LoaderInterceptor} from './interceptors/loader.interceptor';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {PlaygroundComponent} from './components/playground/playground.component';
 import {SignalComponent} from './components/signal/signal.component';
+import {DialogComponent} from './components/dialog/dialog.component';
 
 export const routes: Routes = [
   {
@@ -34,5 +35,9 @@ export const routes: Routes = [
     path: 'signal',
     component: SignalComponent,
     providers: [provideHttpClient(withInterceptors([LoaderInterceptor]))],
+  },
+  {
+    path: 'dialog',
+    component: DialogComponent,
   },
 ];
