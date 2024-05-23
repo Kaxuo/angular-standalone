@@ -2,7 +2,7 @@
   display: grid;
   background-color: grey;
   grid-template-columns: 900px 1fr;
-
+  grid-template-rows: 1fr;
   .first-table {
     background-color: red;
   }
@@ -10,5 +10,17 @@
     background-color: yellow;
     display: block;
     overflow-x: scroll;
+  }
+}
+
+.glide-effect {
+  display: grid;
+  grid-template-rows: max-content 0fr;
+  transition: grid-template-rows 0.3s ease;
+  &:hover {
+    grid-template-rows: max-content 1fr;
+  }
+  .dropdown {
+    overflow: hidden;
   }
 }
