@@ -1,7 +1,5 @@
 .modal {
   display: none;
-  width: 250px;
-  height: 100px;
   transition-property: overlay display opacity;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
@@ -24,3 +22,30 @@
     translate: 0 -25vh;
   }
 }
+
+.transition-with-display-block-from-none {
+  transition-property: display opacity;
+  transition-duration: 1s;
+  // allow discrete type properties
+  transition-behavior: allow-discrete;
+  // for the opened css like dialog[open]
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+// Secret stuff for display
+// dialog::backdrop {
+//   display: block;
+// }
+
+// dialog[open]::backdrop {
+//   display: none;
+// }
+
+// @starting-style {
+//   dialog[open]::backdrop {
+//     display: none;
+//     opacity: 0;
+//   }
+// }
