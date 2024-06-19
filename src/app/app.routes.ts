@@ -7,6 +7,7 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {PlaygroundComponent} from './components/playground/playground.component';
 import {SignalComponent} from './components/signal/signal.component';
 import {DialogComponent} from './components/dialog/dialog.component';
+import { ObsComponent } from './components/obs/obs.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,11 @@ export const routes: Routes = [
   {
     path: 'people',
     component: ProjectsComponent,
+    providers: [provideHttpClient(withInterceptors([LoaderInterceptor]))],
+  },
+  {
+    path: 'obs',
+    component: ObsComponent,
     providers: [provideHttpClient(withInterceptors([LoaderInterceptor]))],
   },
   {
