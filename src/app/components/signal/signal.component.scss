@@ -11,8 +11,8 @@
   }
 }
 
-.single-item{
-  transition:op
+.single-item {
+  transition: opacity 1s ease-in-out;
 }
 
 .item-list:has(.single-item:hover) .single-item:not(:hover) {
