@@ -1,7 +1,7 @@
 import {Injectable, inject, signal} from '@angular/core';
 import {Observable, tap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Todo} from '../Types/Todo';
+import {Todo} from '../types/Todo';
 
 @Injectable({
   providedIn: 'root',

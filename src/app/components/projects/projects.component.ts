@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PeopleService} from 'src/app/services/people.service';
 import {Observable, map, of, startWith} from 'rxjs';
-import {Person} from 'src/app/Types/Person';
-import {Results} from 'src/app/Types/Results';
+import {Person} from 'src/app/types/Person';
+import {Results} from 'src/app/types/Results';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({

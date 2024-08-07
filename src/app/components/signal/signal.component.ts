@@ -2,7 +2,7 @@ import {Component, Signal, computed, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TodoService} from 'src/app/services/todo.service';
 import {Observable, Subject, shareReplay, startWith, take, takeUntil, tap} from 'rxjs';
-import {Todo} from 'src/app/Types/Todo';
+import {Todo} from 'src/app/types/Todo';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
