@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExcelUploadComponent } from './excel-upload.component';
+import { DbManipulationComponent } from './db-manipulation.component';
 
-describe('ExcelUploadComponent', () => {
-  let component: ExcelUploadComponent;
-  let fixture: ComponentFixture<ExcelUploadComponent>;
+describe('DbManipulationComponent', () => {
+  let component: DbManipulationComponent;
+  let fixture: ComponentFixture<DbManipulationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExcelUploadComponent]
+      imports: [DbManipulationComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ExcelUploadComponent);
+    fixture = TestBed.createComponent(DbManipulationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
