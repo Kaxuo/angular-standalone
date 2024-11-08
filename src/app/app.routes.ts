@@ -8,6 +8,7 @@ import {PlaygroundComponent} from './components/playground/playground.component'
 import {SignalComponent} from './components/signal/signal.component';
 import {DialogComponent} from './components/dialog/dialog.component';
 import { ObsComponent } from './components/obs/obs.component';
+import { ExcelUploadComponent } from './components/excel-upload/excel-upload.component';
 
 export const routes: Routes = [
   {
@@ -45,5 +46,9 @@ export const routes: Routes = [
   {
     path: 'dialog',
     component: DialogComponent,
+  },
+  {
+    path: 'excel-upload',
+    component: ExcelUploadComponent,
   },
 ];
