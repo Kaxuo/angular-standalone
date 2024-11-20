@@ -1,31 +1,60 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {CommonModule} from '@angular/common';
 import {Component, signal} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {AgGridAngular} from 'ag-grid-angular';
 import {ColDef, GridApi, GridReadyEvent} from 'ag-grid-community';
 import * as _ from 'lodash';
+import {Observable, of, shareReplay, tap} from 'rxjs';
+import {LoadingService} from 'src/app/services/loading.service';
+import {RiskService} from 'src/app/services/risk.service';
 
 @Component({
   selector: 'app-db-manipulation',
   standalone: true,
-  imports: [AgGridAngular, CommonModule],
+  imports: [AgGridAngular, CommonModule, ReactiveFormsModule],
+  providers: [RiskService],
   templateUrl: './db-manipulation.component.html',
   styleUrl: './db-manipulation.component.scss',
 })
 export class DbManipulationComponent {
   private gridApi!: GridApi<any>;
+  riskData: Observable<any> = new Observable();
   isEditing = signal<boolean>(false);
-  colDefs: ColDef[] = [{field: 'FirstName'}, {field: 'LastName'}, {field: 'Email'}];
-  defaultColDef: ColDef = {
-    flex: 1,
-    editable: true,
-    resizable: true,
-    sortable: true,
-    filter: true,
-  };
+  tableSelection: FormGroup;
+
+  colDefs: ColDef[] = [];
   themeClass = 'ag-theme-quartz';
-  rowData = rowData.map(el => ({...el, modified: false}));
-  originalData = rowData.map(el => ({...el, modified: false}));
+  rowData = [];
+  originalData = [];
+
+  constructor(
+    private riskService: RiskService,
+    private fb: FormBuilder,
+    private loadingService: LoadingService,
+  ) {}
+
+  ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.tableSelection = this.fb.group({
+      selection: [null],
+    });
+    this.tableSelection.valueChanges.subscribe(({selection}) => {
+      switch (true) {
+        case selection == 'APLife':
+          this.fetchRiskData(() => this.riskService.getApLife());
+          break;
+        case selection == 'BondIndices':
+          this.fetchRiskData(() => this.riskService.getBondIndices());
+          break;
+        default:
+          this.riskData = of([]);
+      }
+    });
+  }
 
   reset() {
     this.rowData = _.cloneDeep(this.originalData);
@@ -33,8 +62,15 @@ export class DbManipulationComponent {
   }
 
   save() {
-    console.log(this.rowData);
-    console.log(this.originalData);
+    const dataToBeSent = this.rowData.filter((el: {modified: boolean}) => el.modified == true);
+    console.log(dataToBeSent);
+    dataToBeSent.length == 0 && alert('No Data modified');
+    const selection = this.tableSelection.value.selection;
+    switch (true) {
+      case selection == 'APLife':
+        this.loadingService.show();
+        this.riskService.editApLife(this.rowData).subscribe(() => this.loadingService.hide());
+    }
   }
 
   onCellValueChanged(event: any) {
@@ -51,6 +87,19 @@ export class DbManipulationComponent {
 
   onGridReady(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
+  }
+
+  fetchRiskData(serviceCall: () => Observable<any>) {
+    this.loadingService.show();
+    this.riskData = serviceCall().pipe(
+      tap(d => {
+        this.rowData = d.riskData.map((data: any) => ({...data, modified: false}));
+        this.originalData = d.riskData.map((data: any) => ({...data, modified: false}));
+        this.colDefs = d.columns;
+        this.loadingService.hide();
+      }),
+      shareReplay(),
+    );
   }
 }
 

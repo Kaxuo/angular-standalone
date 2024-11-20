@@ -1,37 +1,27 @@
-<form class="max-w-sm mx-auto m-4">
-  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose a database</label>
-  <select
-    id="countries"
+<form class="max-w-sm mx-auto m-4" [formGroup]="tableSelection" *ngIf="tableSelection">
+  <label for="tables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose a table</label>
+  <select formControlName="selection"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-    <option selected>Choose a Database</option>
-    <option value="US">United States</option>
-    <option value="CA">Canada</option>
-    <option value="FR">France</option>
-    <option value="DE">Germany</option>
+    <option value="APLife">Ap Life</option>
+    <option value="BondIndices">Bond indices</option>
   </select>
 </form>
 
-<div class="content m-2">
+<div class="content m-2" *ngIf="riskData | async">
   <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
-  <ag-grid-angular
-    style="width: 100%; height: 500px"
-    [class]="themeClass"
-    [rowData]="rowData"
-    [columnDefs]="colDefs"
-    [defaultColDef]="defaultColDef"
-    (cellMouseOut)="onCellValueChanged($event)"
-    (cellEditingStarted)="onCellEditingStarted()"
-    (cellEditingStopped)="onCellEditingStopped()"
-    (gridReady)="onGridReady($event)"></ag-grid-angular>
+  <ag-grid-angular style="width: 100%; height: 500px" [class]="themeClass" [rowData]="rowData" [columnDefs]="colDefs"
+    (cellValueChanged)="onCellValueChanged($event)" (cellEditingStarted)="onCellEditingStarted()"
+    (cellEditingStopped)="onCellEditingStopped()" (gridReady)="onGridReady($event)"></ag-grid-angular>
 </div>
 
-<div class="buttons m-4">
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="reset()">Reset</button>
-  <button
-    [ngClass]="{'opacity-20': isEditing()}"
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    (click)="save()"
-    [disabled]="isEditing()">
-    Save
-  </button>
+<div class="buttons m-4" *ngIf="riskData | async as rd">
+  <ng-container *ngIf="rd.riskData.length != 0">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      (click)="reset()">Reset</button>
+    <button [ngClass]="{'opacity-20': isEditing()}"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="save()"
+      [disabled]="isEditing()">
+      Save
+    </button>
+  </ng-container>
 </div>
