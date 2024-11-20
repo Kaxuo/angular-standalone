@@ -1,0 +1,11 @@
+<div class="content m-2">
+    <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
+    <ag-grid-angular style="width: 100%; height: 500px" [class]="themeClass" [rowData]="rowData" [columnDefs]="colDefs"
+        (gridReady)="onGridReady($event)" [defaultColDef]="defaultColDef"></ag-grid-angular>
+</div>
+
+<div class="buttons m-4">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        (click)="createExcelFromJSON(rowData,'rulesFormattedValidation.xlsx')">
+        Download</button>
+</div>

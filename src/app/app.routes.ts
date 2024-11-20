@@ -9,6 +9,7 @@ import {SignalComponent} from './components/signal/signal.component';
 import {DialogComponent} from './components/dialog/dialog.component';
 import {ObsComponent} from './components/obs/obs.component';
 import {DbManipulationComponent} from './components/db-manipulation/db-manipulation.component';
+import { RulesGuidelineAgeasComponent } from './components/rules-guideline-ageas/rules-guideline-ageas.component';
 
 export const routes: Routes = [
   {
@@ -50,5 +51,9 @@ export const routes: Routes = [
   {
     path: 'excel-upload',
     component: DbManipulationComponent,
+  },
+  {
+    path: 'rules-guidelines',
+    component: RulesGuidelineAgeasComponent,
   },
 ];
