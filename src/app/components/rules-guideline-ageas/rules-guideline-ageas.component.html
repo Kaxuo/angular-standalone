@@ -1,3 +1,8 @@
+<h2>%variable% means that the varible is dynamic</h2>
+<h2>[ranges] means a list or an array of values</h2>
+<h1
+    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+    Table Level 1</h1>
 
 <div class="content m-2">
     <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
@@ -5,8 +10,25 @@
         (gridReady)="onGridReady($event)" [defaultColDef]="defaultColDef"></ag-grid-angular>
 </div>
 
-<div class="buttons m-4">
+<div class="buttons m-4 text-center">
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         (click)="createExcelFromJSON(rowData,'rulesFormattedValidation.xlsx')">
-        Download</button>
+        Download Data</button>
+</div>
+
+<h1
+    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+    Table Level 2</h1>
+
+
+<div class="content m-2">
+    <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
+    <ag-grid-angular style="width: 100%; height: 80vh" [class]="themeClass" [rowData]="levelTwoData"
+        [columnDefs]="colDefs" (gridReady)="onGridReady($event)" [defaultColDef]="defaultColDef"></ag-grid-angular>
+</div>
+
+<div class="buttons m-4 text-center">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        (click)="createExcelFromJSON(levelTwoData,'rulesFormattedValidationLevel2.xlsx')">
+        Download Data</button>
 </div>

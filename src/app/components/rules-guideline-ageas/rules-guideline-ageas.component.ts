@@ -29,7 +29,7 @@ export class RulesGuidelineAgeasComponent {
     autoHeight: true,
   };
   rowData = data.map((el, i) => ({...el, num: i + 1}));
-
+  levelTwoData = levelTwo.map((el, i) => ({...el, num: i + 1}));
   ngOnInit() {
     console.log(this.rowData);
   }
@@ -95,22 +95,22 @@ export const data = [
   ),
   new RuleDB(
     '.NET',
-    'IF %columnName% == %variable% then Sum of [Columns] to be between 0 and 100 % (included)',
+    'IF value of %columnName% == %variable% then Sum of [Columns] to be between 0 and 100 % (included)',
     '16.2',
     'Equity indices:IDX_(1...5)_FSIR',
-    'Should 0 and 100 % be dynamic ?',
+    '',
   ),
   new RuleDB(
     '.NET',
     'Value of %columnName% to be between 0 and 1 (included)',
     '19.2 / 318.02 / 653.00 ',
     'Asset Pool UL:AP_DCRE //',
-    'Should 0 and 1 be dynamic ?',
+    '',
   ),
   new RuleDB(
     '.NET',
     'Value of %columnName% should not contain [RangesOfValue] ( example would be colon, comma ,underscore , ... )',
-    '252.00 / 252.10 / 253.00 / 362.00',
+    '218,00 / 218,10 / 218,20 / 222,00 / 252.00 / 252.10 / 253.00 / 362.00',
     'Asset Pool conv:AP_AP//\nAsset Pool Ul:AP_AP//\nOther BS:OBSI_ITEM  //',
     '',
   ),
@@ -128,13 +128,7 @@ export const data = [
     'MP Conv:MP_GPS',
     '',
   ),
-  new RuleDB(
-    '.NET',
-    'LEI Code Check',
-    '517.00 / 521.00 / 526.00',
-    'OBSI_INGC_LEIC',
-    '',
-  ),
+  new RuleDB('.NET', 'LEI Code Check', '517.00 / 521.00 / 526.00', 'OBSI_INGC_LEIC', ''),
   new RuleDB(
     'SQL\n.NET',
     'Value of %columnName% should be equal or higher than %variable%',
@@ -142,15 +136,89 @@ export const data = [
     'General:G_TNDTL //\nCPDexposuresType1 :CP1_COLLAT_MRA //\n AP_Conv:AP_CAPI // \nCounterPartiesType2:CP2_AP',
     'Should create the constraint in sql and also code in .NET, easy to do',
   ),
+  new RuleDB('.NET', 'Value of %colum1% or value of %column2% has to equal to 0', '645.00', '', ''),
   new RuleDB(
     '???',
-    "Me no understando",
+    'Me no understando',
     '205.10 / 222.10 / 239.00 / 306.00 / 309.00 / 316.00 / 317.00 / 595.00 -> 634.00 / 651.00 / 652.00 / 227.00 / 239.00 / 657.00 / 658.00',
     '',
     'Need more info',
   ),
-  new RuleDB('.NET', 'Value of %colum1% or value of %column2% has to equal to 0', '645.00', '', ''),
   new RuleDB('???', 'c# Method ???', '365.00 / 379.00 ->  386.02 ', '', 'Need more info'),
-  new RuleDB('???', 'No specific rules written', '518.00 / 545.10 / 669.00', '', 'Need more info'),
-  new RuleDB('???', 'Formulas ?', '218,00 / 218,10 / 218,20 / 222,00', '', 'Need more info'),
+  new RuleDB('???', 'No specific rules written', '518.00 / 545.10 / 669.00', '', 'Could be just data type'),
+];
+
+export const levelTwo = [
+  new RuleDB(
+    '.NET',
+    'For each AP where APCF_FIIN equals to "Bonds" and "Mortages", then APCF_RL (Fix rate bond Principle Run-off) should be equal to "Sum of all Principals Fixed - Sum of all Amortization Returns + Sum of all Principals Floating',
+    '3.00',
+    '',
+    'Might need more info. Working with rows together can be complicated.',
+  ),
+  new RuleDB(
+    '.NET',
+    'If value of %columnName1% is "Life" then value of %columnName2% should be %variable%',
+    '7.40 / 7.50',
+    '',
+    'It says it is a string though ? \nColumnsNames could come from different tables',
+  ),
+  new RuleDB(
+    '.NET',
+    'For Each asset pools , in the table %nameOfTable%, each AP needs to have [RowsOfValues]',
+    '15.10 / 15,20',
+    '',
+    '',
+  ),
+  new RuleDB(
+    '.NET',
+    'For Each asset pools where the value of the column "Type" is LIFE RESERVES", "LIFE CAPITAL", "UNIT LINKED CAPITAL", or "SURPLUS INVESTMENT ASSETS LIFE" then the following 3 additional items must also be present : "Effective reporting year dividend yield" , "Effective reporting year equity realized capital return before rebalancing", "Concentration risk shock " ',
+    '15.10',
+    '',
+    'Did I understand that correctly',
+  ),
+  new RuleDB(
+    '.NET',
+    'in RE_INDICES, if RE_IDX_MT is different than UNIT LINKED , then 6 additional items must be present for the same asset pool : "Initial asset mix cost", "Initial asset mix Intangible percentage", "Effective reporting year real estate realized capital return before rebalancing", "Effective reporting year rent yield","Concentration risk shock","Initial asset mix Intangible percentage cost"',
+    '15.20',
+    '',
+    '',
+  ),
+  new RuleDB(
+    '.NET',
+    'In Equity Indices, if "Initial asset mix" or "Target asset mix" is different than 0 or blank , then the sum of [rows / Indexhn] should be 100% or 1',
+    '15.30',
+    '',
+    'I need an example to make sure I understand.',
+  ),
+  new RuleDB(
+    '.NET',
+    'If value of %columnName% equals to %variable1% or %variable2% then sum of all [columns] should be 100% ',
+    '16,10',
+    '',
+    'Variables could be replaced by an array and check if there is a match ?',
+  ),
+  new RuleDB(
+    '.NET',
+    'if value of %columnName1% equals 3 , then value of %columnName2% should not be empty',
+    '18,00',
+    '',
+    'Should 3 also be a variable ? will change later if needed',
+  ),
+  new RuleDB(
+    '.NET',
+    'Percentage of deferred capital gains for shares should be between 0 and 1 (included)',
+    '19,10',
+    '',
+    'Might need to know how the calculation is done and which columns are involved.',
+  ),
+  new RuleDB('.NET', 'Value of the Sum of [columns] should equal to 100%', '23,10 / 23,20 ', '', ''),
+  new RuleDB(
+    '.NET',
+    'If (APCF_TP does not equal to "SURPLUS INVESTMENT ASSETS LIFE" or "SURPLUS INVESTMENT ASSETS NON LIFE" )AND (ACPF_RL equals to "Fixed Rate Bond Principle run-off", "Mortgage Principle run-off" or "Fixed Rate Coupon (by maturity)") then the sum of Year 0 cash flow should be >=0 ',
+    '30,00',
+    '',
+    'Should recheck that rule, it is too specific. I am not sure about the last (year 0)',
+  ),
+  new RuleDB('???', 'Me no understando', '25,00', '', 'Need more info'),
 ];
