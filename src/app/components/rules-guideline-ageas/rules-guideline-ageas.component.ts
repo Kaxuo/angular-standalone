@@ -91,7 +91,7 @@ export const data = [
     'All values of %columnName% should be unique',
     '234.20 / 244.00 / 528.00',
     'RRC-Conv:RC_CONV // \nOther BS Items:OBSI_ITEM //',
-    'SQL assigns a certain type to columns , prevent other types to be input',
+    '',
   ),
   new RuleDB(
     '.NET',
