@@ -91,7 +91,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'Value of %columnName% should not contain [RangesOfValue] ( example would be colon, comma ,underscore , ... )',
-    '218,00 / 218,10 / 218,20 / 222,00 / 252.00 / 252.10 / 253.00 / 362.00 / 274.00²',
+    '218,00 / 218,10 / 218,20 / 222,00 / 252.00 / 252.10 / 253.00 / 362.00 / 274.00² / 362.00²',
     '² mean level 2 rules from the sheet of Mohammed ',
   ),
   new RuleDB(
@@ -109,8 +109,8 @@ export const data = [
   new RuleDB('.NET', 'LEI Code Check', '517.00 / 521.00 / 526.00', ''),
   new RuleDB(
     'SQL\n.NET',
-    'Value of %columnName% should be equal or higher than %variable%',
-    '284.00 / 295.00 / 305.00 / 315.20 / 318.01 / 347.01 / 335.01 / 356.00 / 356.02 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 278.00² / 279.00² / 281.00²',
+    'if(true) Value of %columnName% should be equal or higher than %variable%',
+    '284.00 / 295.00 / 305.00 / 315.20 / 318.01 / 347.01 / 335.01 / 356.00 / 356.02 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 278.00² / 279.00² / 281.00² / 378.00²',
     'Should create the constraint in sql and also code in .NET, easy to do \n ² mean level two ',
   ),
   new RuleDB('.NET', 'Value of %colum1% or value of %column2% has to equal to 0', '645.00', ''),
@@ -133,14 +133,14 @@ export const levelTwo = [
   ),
   new RuleDB(
     '.NET',
-    'If value of %columnName1% is "Life" then value of %columnName2% should be %variable%',
-    '7.40 / 7.50',
+    'If value of %columnName1% is %variable1% then value of %columnName2% should be %variable2%',
+    '7.40 / 7.50 / 356.12',
     'It says it is a string though ? \nColumnsNames could come from different tables',
   ),
   new RuleDB(
     '.NET',
     'if (true) , then the table should have  [lines] from %columnName%',
-    '15.10 / 15,20 / 84.20 / 207.00 / 260.20 / 267.20 / 267.25',
+    '15.10 / 15,20 / 84.20 / 207.00 / 260.20 / 267.20 / 267.25 / 369.10',
     'Conditions could be optional',
   ),
   new RuleDB(
@@ -151,9 +151,9 @@ export const levelTwo = [
   ),
   new RuleDB(
     '.NET',
-    'if value of %columnName1% equals 3 , then value of [columns] should not be empty',
-    '18,00 / 229.00',
-    'Should 3 also be a variable ? will change later if needed \nColumns could be 1 or multiple',
+    'if (true) , then value of [columns] should not be empty',
+    '18,00 / 229.00 / 356.11 / 366.00 / 368.20',
+    'Columns could be 1 or multiple',
   ),
   new RuleDB(
     '.NET',
@@ -188,7 +188,7 @@ export const levelTwo = [
   new RuleDB(
     '.NET',
     'Value of %columnName% should be a value of [RangesOfValue]',
-    '51.10 / 51.20 / 231.00 / 262.00 / 264.00 / 269.00 / 273.20 / 276.00* / 276.10* / 280.00* / 286.00* / 287.00 / 289.00',
+    '51.10 / 51.20 / 231.00 / 262.00 / 264.00 / 269.00 / 273.20 / 276.00* / 276.10* / 280.00* / 286.00* / 287.00 / 289.00 / 356.07 / 376.00',
     'Similar to rule Num 8 in the first table \n* means 0 or 1 \nCan probably fuse this rule with the Num8',
   ),
   new RuleDB(
@@ -216,7 +216,7 @@ export const levelTwo = [
     '',
   ),
   new RuleDB('.NET', 'Value of %columnName% should be between 0 and 1 (included) (Empty would mean 0) ', '237.00', ''),
-  new RuleDB('.NET', 'if(true) then value of %columnName% should be empty ', '238.00', 'Again, Condition is optional'),
+  new RuleDB('.NET', 'if(true) then value of %columnName% should be empty ', '238.00 / 365.01 / 368.20 ', 'Again, Condition is optional'),
   new RuleDB(
     '.NET',
     'if(true) then value of %columnName% should be 0 or 1 else it should be empty',
@@ -235,7 +235,7 @@ export const levelTwo = [
   new RuleDB(
     '.NET',
     'if (true) then value should be positive',
-    '260.70',
+    '260.70 / 337.00 ',
     'Condition optional - Can probably fuse it with "Higher than X rule" , Num 11',
   ),
   new RuleDB('.NET', 'Minimum 1 letter', '274.00', ''),
@@ -248,10 +248,23 @@ export const levelTwo = [
   ),
   new RuleDB(
     '.NET',
-    'if(true) then all year should have positive value unless the initial value us 0 then all the years could be empty',
-    '277.10 / 277.20 / 277.30',
-    'Did I understand correctly',
+    'Value of %column1% should be higher than value of %column2%',
+    '358.00',
+    '',
   ),
-  new RuleDB('???', 'Me no understando', '25.00 / 44.00 / 211.00(wtf) / 260.30', 'Need more info'),
-  new RuleDB('???', 'No specific rules written', '50.00', 'Could be just data type'),
+  new RuleDB(
+    '.NET',
+    'Value of %column1% should be equal or higher than value of %column2%',
+    '363.00',
+    '',
+  ),
+  new RuleDB(
+    '.NET',
+    'Super specific',
+    '359.01 / 590.00 / 375.00',
+    '',
+  ),
+  new RuleDB('???', 'Me no understando', '25.00 / 44.00 / 211.00(wtf) / 260.30 / 335.02 / 336.02', 'Need more info'),
+  new RuleDB('???', 'Two different meaning between description and criteria', '314.00 / 349.00 / 350', 'will check with mohammed'),
+  new RuleDB('???', 'No specific rules written', '50.00 / 359.00', 'Could be just data type'),
 ];
