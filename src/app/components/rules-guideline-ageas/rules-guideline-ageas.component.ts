@@ -27,8 +27,9 @@ export class RulesGuidelineAgeasComponent {
     wrapText: true,
     autoHeight: true,
   };
-  rowData = data.map((el, i) => ({...el, num: i + 1}));
-  levelTwoData = levelTwo.map((el, i) => ({...el, num: i + 1}));
+  rowData = this.addSequentialNumbers(data);
+  levelTwoData = this.addSequentialNumbers(levelTwo);
+  levelThreeData = this.addSequentialNumbers(levelThree);
   ngOnInit() {
     console.log(this.rowData);
   }
@@ -49,6 +50,10 @@ export class RulesGuidelineAgeasComponent {
     XLSX.writeFile(workbook, fileName);
 
     console.log(`Excel file '${fileName}' created successfully!`);
+  }
+
+  addSequentialNumbers<T>(data: T[]): (T & {num: number})[] {
+    return data.map((el, i) => ({...el, num: i + 1}));
   }
 }
 
@@ -80,7 +85,12 @@ export const data = [
     'Value of columns can be mandatory based on how SQL is configured',
   ),
   new RuleDB('SQL', 'Value can be empty', 'General Rule', 'NULL is allowed'),
-  new RuleDB('SQL', 'All values of %columnName% should be unique', '234.20 / 244.00 / 528.00 / 529.00', 'Either one or combination of multiple columns'),
+  new RuleDB(
+    'SQL',
+    'All values of %columnName% should be unique',
+    '234.20 / 244.00 / 528.00 / 529.00',
+    'Either one or combination of multiple columns',
+  ),
   new RuleDB(
     '.NET',
     'IF value of %columnName% == %variable% then Sum of [Columns] to be between 0 and 100 % (included)',
@@ -236,9 +246,24 @@ export const levelTwo = [
   new RuleDB('.NET', 'if(true) Value of %column1% should be higher than value of %column2%', '358.00 / 382.04', ''),
   new RuleDB('.NET', 'Value of %column1% should be equal or higher than value of %column2%', '363.00 / 383.22', ''),
   new RuleDB('.NET', 'if(true) Value of %column1% should be between value of %column2% and 1', '382.05 / 382.06', ''),
-  new RuleDB('.NET', 'Super specific', '78.10 / 359.01 / 590.00(a) / 375.00 / 638.00 / 656.00(a)', 'Will check again later \n(a) means they are similar'),
-  new RuleDB('.NET', 'if(true) then value of %columnName1% should be between 0 and 100% (included) and smaller or equal to value of %columnName2% else it should be -100% or 0% if empty', '559.00 / 560.00', 'Should I split that into multiple rules ? '),
-  new RuleDB('???', 'Me no understando', '25.00 / 44.00 / 211.00(wtf) / 260.30 / 335.02 / 336.02 / 664.00', 'Need more info'),
+  new RuleDB(
+    '.NET',
+    'Super specific',
+    '78.10 / 359.01 / 590.00(a) / 375.00 / 638.00 / 656.00(a)',
+    'Will check again later \n(a) means they are similar',
+  ),
+  new RuleDB(
+    '.NET',
+    'if(true) then value of %columnName1% should be between 0 and 100% (included) and smaller or equal to value of %columnName2% else it should be -100% or 0% if empty',
+    '559.00 / 560.00',
+    'Should I split that into multiple rules ? ',
+  ),
+  new RuleDB(
+    '???',
+    'Me no understando',
+    '25.00 / 44.00 / 211.00(wtf) / 260.30 / 335.02 / 336.02 / 664.00',
+    'Need more info',
+  ),
   new RuleDB(
     '???',
     'Two different meaning between description and criteria',
@@ -248,3 +273,5 @@ export const levelTwo = [
   new RuleDB('???', 'No specific rules written', '50.00 / 359.00', 'Could be just data type'),
   new RuleDB('???', 'Redundant, can be ignored', '562.00', ''),
 ];
+
+export const levelThree = [new RuleDB('???', 'Redundant, can be ignored', '562.00', '')];
