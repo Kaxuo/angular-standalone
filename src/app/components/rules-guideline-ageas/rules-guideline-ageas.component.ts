@@ -101,8 +101,8 @@ export const data = [
   new RuleDB(
     '.NET',
     'Value of %columnName% should not contain [RangesOfValue] ( example would be colon, comma ,underscore , ... )',
-    '218,00 / 218,10 / 218,20 / 222,00 / 252.00 / 252.10 / 253.00 / 362.00 / 274.00² / 362.00²',
-    '² mean level 2 rules from the sheet of Mohammed ',
+    '218,00 / 218,10 / 218,20 / 222,00 / 252.00 / 252.10 / 253.00 / 362.00 / 274.00² / 362.00² / 251.00³',
+    '² mean level 2 rules from the sheet of Mohammed , ³ for level 3 rules ',
   ),
   new RuleDB(
     '.NET',
@@ -120,7 +120,7 @@ export const data = [
   new RuleDB(
     'SQL\n.NET',
     'if(true) Value of %columnName% should be equal or higher than %variable%',
-    '284.00 / 295.00 / 305.00 / 315.20 / 318.01 / 347.01 / 335.01 / 356.00 / 356.02 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 278.00² / 279.00² / 281.00² / 378.00²',
+    '284.00 / 295.00 / 305.00 / 315.20 / 318.01 / 347.01 / 335.01 / 356.00 / 356.02 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 278.00² / 279.00² / 281.00² / 378.00²(?)',
     'Should create the constraint in sql and also code in .NET, easy to do \n ² mean level two ',
   ),
   new RuleDB('.NET', 'Value of %colum1% or value of %column2% has to equal to 0', '645.00', ''),
@@ -162,7 +162,7 @@ export const levelTwo = [
   new RuleDB(
     '.NET',
     'if (true) , then value of [columns] should not be empty',
-    '18,00 / 229.00 / 356.11 / 366.00 / 368.20 / 383.21 / 505.00 / 564.00 / 591.00 / 635.00',
+    '18,00 / 229.00 / 356.11 / 366.00 / 368.20 / 383.21 / 505.00 / 564.00 / 591.00 / 635.00 / 260.40³ / 260.50³',
     'Columns could be 1 or multiple \nIt is the same rule as the second rule in the first table ',
   ),
   new RuleDB(
@@ -198,7 +198,7 @@ export const levelTwo = [
   new RuleDB(
     '.NET',
     'Names and order consistency between two sheets/table',
-    '66.10 / 66.30 / 636.00*',
+    '66.10 / 66.30 / 636.00* / 66.20³',
     'Would like more info or examples to make I understand \n* Only names need to be present in another table.',
   ),
   new RuleDB(
@@ -211,8 +211,8 @@ export const levelTwo = [
   new RuleDB(
     '.NET',
     'if(true) Value of [column(s)] should be between 0 and 1 (included)',
-    '19.10 / 271.00 / 237.00* / 382.03 / 383.13 / 550.00 / 561.10* / 561.20* / 568.00 / 569.00 / 577.00* / 648.00 / 650.00',
-    '* means Empty equals to 0 \nCondition is Optional \n All columns are floating number, aka % based',
+    '19.10 / 271.00 / 237.00* / 382.03 / 383.13 / 550.00 / 561.10* / 561.20* / 568.00 / 569.00 / 577.00* / 648.00 / 650.00 / 360.10³',
+    '* means Empty equals to 0 \nCondition is Optional \n All columns are floating number, aka % based \n³ means level 3',
   ),
   new RuleDB(
     '.NET',
@@ -248,15 +248,15 @@ export const levelTwo = [
   new RuleDB('.NET', 'if(true) Value of %column1% should be between value of %column2% and 1', '382.05 / 382.06', ''),
   new RuleDB(
     '.NET',
-    'Super specific',
-    '78.10 / 359.01 / 590.00(a) / 375.00 / 638.00 / 656.00(a)',
-    'Will check again later \n(a) means they are similar',
-  ),
-  new RuleDB(
-    '.NET',
     'if(true) then value of %columnName1% should be between 0 and 100% (included) and smaller or equal to value of %columnName2% else it should be -100% or 0% if empty',
     '559.00 / 560.00',
     'Should I split that into multiple rules ? ',
+  ),
+  new RuleDB(
+    '.NET',
+    'Super specific',
+    '78.10 / 359.01 / 590.00(a) / 375.00 / 638.00 / 656.00(a)',
+    'Will check again later \n(a) means they are similar',
   ),
   new RuleDB(
     '???',
@@ -274,4 +274,27 @@ export const levelTwo = [
   new RuleDB('???', 'Redundant, can be ignored', '562.00', ''),
 ];
 
-export const levelThree = [new RuleDB('???', 'Redundant, can be ignored', '562.00', '')];
+export const levelThree = [
+  new RuleDB(
+    '.NET',
+    'Consistency Check / Matching values',
+    '4.00 / 7.10 / 7.20 / 93.00 / 113.20 / 235.00 / 246.00 / 257.10 / 257.20 / 257.30 / 257.50 / 272.00 / 273.40',
+    'Might need different rules for each',
+  ),
+  new RuleDB(
+    '.NET',
+    'if (true) value of %columnName% should be equal to [RangeOfValue]',
+    '7.3 / 223.00 / 258.10 / 258.20 / 270.20',
+    'Similar to rule Num 8 in the first table \n* means 0 or 1 \nCan probably fuse this rule with the Num8',
+  ),
+  new RuleDB(
+    '.NET',
+    'Existence check',
+    '13.00 / 17.00',
+    'Means that if value from table 1 exist, they should exist in table 2',
+  ),
+  new RuleDB('.NET', 'Sum of [columns] equals to [columns]', '39.00', ''),
+  new RuleDB('.NET', 'if(true) then value of %columnName% should be 0 or blank', '236.00', ''),
+  new RuleDB('.NET', 'Super specific', '26.00 / 100.30.', 'Will check again later'),
+  new RuleDB('???', 'Me no understando', '24.00 / 182.20 / 248.00 / 270.10', 'Need more info'),
+];
