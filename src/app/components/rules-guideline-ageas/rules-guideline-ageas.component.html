@@ -2,9 +2,9 @@
     <h2>%variable% means that the varible is dynamic</h2>
     <h2>[ranges] means a list or an array of values</h2>
     <h2>(true) means a condition. Some conditions are shown because they're quite specific. if you see (true) that means
-        the
-        condition is different but the logic of the result is the same. The condition could be optional </h2>
-    <h2>Don't be surprised if you one rule submitted to multiple rules </h2>
+        the condition is optional but the logic of the result is the same. The condition could be optional </h2>
+    <h2>Don't be surprised if you see one rule submitted to multiple rules </h2>
+    <h2>² means from level 2 sheet and 3 means from level 3 sheet</h2>
 </div>
 
 <h1
@@ -13,7 +13,7 @@
 
 <div class="content m-2">
     <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
-    <ag-grid-angular style="width: 100%; height: 80vh" [class]="themeClass" [rowData]="rowData" [columnDefs]="colDefs"
+    <ag-grid-angular style="width: 100%; height: 70vh" [class]="themeClass" [rowData]="rowData" [columnDefs]="colDefs"
         (gridReady)="onGridReady($event)" [defaultColDef]="defaultColDef"></ag-grid-angular>
 </div>
 
@@ -32,7 +32,7 @@
 
 <div class="content m-2">
     <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
-    <ag-grid-angular style="width: 100%; height: 80vh" [class]="themeClass" [rowData]="levelTwoData"
+    <ag-grid-angular style="width: 100%; height: 70vh" [class]="themeClass" [rowData]="levelTwoData"
         [columnDefs]="colDefs" (gridReady)="onGridReady($event)" [defaultColDef]="defaultColDef"></ag-grid-angular>
 </div>
 
@@ -51,7 +51,7 @@
 
 <div class="content m-2">
     <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
-    <ag-grid-angular style="width: 100%; height: 80vh" [class]="themeClass" [rowData]="levelThreeData"
+    <ag-grid-angular style="width: 100%; height: 70vh" [class]="themeClass" [rowData]="levelThreeData"
         [columnDefs]="colDefs" (gridReady)="onGridReady($event)" [defaultColDef]="defaultColDef"></ag-grid-angular>
 </div>
 
