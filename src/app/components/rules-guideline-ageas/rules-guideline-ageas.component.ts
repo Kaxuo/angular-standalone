@@ -81,14 +81,14 @@ export const data = [
   new RuleDB(
     'SQL',
     'Value required',
-    'General Rule',
+    'General Rule such as 562.00',
     'Value of columns can be mandatory based on how SQL is configured',
   ),
   new RuleDB('SQL', 'Value can be empty', 'General Rule', 'NULL is allowed'),
   new RuleDB(
     'SQL',
     'All values of %columnName% should be unique',
-    '234.20 / 244.00 / 528.00 / 529.00² / 314.00²',
+    '50.00 / 234.20 / 244.00 / 528.00 / 529.00² / 314.00²',
     'Either one or combination of multiple columns',
   ),
   new RuleDB(
@@ -97,7 +97,12 @@ export const data = [
     '16.2',
     'Super Specific',
   ),
-  new RuleDB('.NET', 'Value of %columnName% to be between 0 and 1 (included)', '19.2 / 653.00 ', ''),
+  new RuleDB(
+    '.NET',
+    'if (true) Value of %columnName% to be between 0 and 1 (included)',
+    '19.2 / 653.00 / 349.00 / 359.00',
+    '',
+  ),
   new RuleDB(
     '.NET',
     'Value of %columnName% should not contain [RangesOfValue] ( example would be colon, comma ,underscore , ... )',
@@ -118,6 +123,7 @@ export const data = [
     'Should create the constraint in sql and also code in .NET, easy to do \n* means cannot be empty \nNeed more info for the rule 378 !!',
   ),
   new RuleDB('.NET', 'Value of %colum1% or value of %column2% has to equal to 0', '645.00', ''),
+  new RuleDB('.NET', 'Value of %columnName1% should be between 0 and value of %columnName2%', '359.00', ''),
   new RuleDB(
     '???',
     'Me no understando',
@@ -179,14 +185,14 @@ export const levelTwo = [
   ),
   new RuleDB(
     '.NET',
-    'If MPRO_ITEM is equal to "Technical provisions gross of reinsurance (Primo)", "Longevity provisions","Low interest rate provisions","Other provisions in front of assets (Primo)","Additional provisions in front of deferred tax asset (Primo)" then the value from year 1 to 50 cannot be negative',
+    'If MPRO_ITEM is equal to "Technical provisions gross of reinsurance (Primo)", "Longevity provisions","Low interest rate provis2ions","Other provisions in front of assets (Primo)","Additional provisions in front of deferred tax asset (Primo)" then the value from year 1 to 50 cannot be negative',
     '33,10',
     'Specific. If the condition is true, then all the columns for that value cannot be negative',
   ),
   new RuleDB(
     '.NET',
     'Value of %columnName% should be a value of [RangesOfValue]',
-    '51.10 / 51.20 / 231.00 / 262.00 / 264.00 / 269.00 / 273.20 / 275.00* /276.00* / 276.10* / 280.00* / 286.00* / 287.00 / 289.00 / 356.07 / 376.00 / 383.09* / 383.12 / 383.16 / 524.00 / 525.00 / 541.00* / 563.00 / 565.00 / 566.00 / 567.00 / 575.00 / 665.00',
+    '51.10 / 51.20 / 231.00 / 262.00 / 264.00 / 269.00 / 273.20 / 275.00* /276.00* / 276.10* / 280.00* / 286.00* / 287.00 / 289.00 / 356.07 / 376.00 / 383.09* / 383.12 / 383.16 / 524.00 / 525.00 / 530.00 / 541.00* / 563.00 / 565.00 / 566.00 / 567.00 / 575.00 / 665.00',
     'Similar to rule Num 8 in the first table \n* means 0 or 1 \nCan probably fuse this rule with the Num8',
   ),
   new RuleDB(
@@ -197,9 +203,9 @@ export const levelTwo = [
   ),
   new RuleDB(
     '.NET',
-    'If MPRO_ITEM equals to one of [RangeOfValues] then MPRO_YEAR (1 to 50) should be smaller or equal to %variable%',
+    'If (true) then value of %columnName% should be smaller or equal to %variable%',
     '209.00 / 210.00',
-    'It is "OR" and not "AND", excel is incorrect (Confirmed by Rama)',
+    '',
   ),
   new RuleDB('.NET', 'If (true) then APRO_YEAR should be between -1 and 1 else it should be 0 or empty ', '238.00', ''),
   new RuleDB(
@@ -253,7 +259,7 @@ export const levelTwo = [
     '.NET',
     'if(true) then value of %columnName1% should be between 0 and 100% (included) and smaller or equal to value of %columnName2% else it should be -100% or 0% if empty',
     '559.00 / 560.00',
-    'Should I split that into multiple rules ? ',
+    '',
   ),
   new RuleDB(
     '.NET',
@@ -267,14 +273,8 @@ export const levelTwo = [
     '25.00 / 44.00 / 211.00(wtf) / 260.30 / 335.02 / 336.02 / 664.00 / 534.00',
     'Need more info',
   ),
-  new RuleDB(
-    '???',
-    'Two different meaning between description and criteria',
-    '349.00 / 350.0',
-    'will check with mohammed \nAbout 530, it says it should be floating but in the excel it says String',
-  ),
-  new RuleDB('???', 'No specific rules written', '50.00 / 359.00', 'Could be just data type'),
-  new RuleDB('???', 'Redundant, can be ignored', '530.00 / 562.00', ''),
+  new RuleDB('???', 'Two different meaning between description and criteria', '350.0', 'will check with mohammed '),
+  new RuleDB('???', 'No specific rules written', '359.00', 'Could be just data type'),
 ];
 
 export const levelThree = [
