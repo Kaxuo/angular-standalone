@@ -1,36 +1,34 @@
-<div style="text-align: center;">
-    <h2>%variable% means that the varible is dynamic</h2>
-    <h2>[ranges] means a list or an array of values</h2>
-    <h2>(true) means a condition. Some conditions are shown because they're quite specific. if you see (true) that means
-        the condition is optional but the logic of the result is the same. The condition could be optional </h2>
-    <h2>Don't be surprised if you see one rule submitted to multiple rules </h2>
-    <h2>² means from level 2 sheet and 3 means from level 3 sheet</h2>
+<div style="text-align: center">
+  <h2>%variable% means that the varible is dynamic</h2>
+  <h2>[ranges] means a list or an array of values</h2>
+  <h2>
+    (true) means a condition. Some conditions are shown because they're quite specific. if you see (true) that means the
+    condition is optional but the logic of the result is the same. The condition could be optional
+  </h2>
+  <h2>Don't be surprised if you see one rule submitted to multiple rules</h2>
+  <h2>² means from level 2 sheet and 3 means from level 3 sheet</h2>
 </div>
 
 <h1
-    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-    Table</h1>
+  class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+  Table
+</h1>
 
 <div class="content m-2">
-    <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
-    <ag-grid-angular style="width: 100%; height: 180vh" [class]="themeClass" [rowData]="rowData" [columnDefs]="colDefs"
-        (gridReady)="onGridReady($event)" [defaultColDef]="defaultColDef"></ag-grid-angular>
+  <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
+  <ag-grid-angular
+    style="width: 100%; height: 180vh"
+    [class]="themeClass"
+    [rowData]="rowData"
+    [columnDefs]="colDefs"
+    (gridReady)="onGridReady($event)"
+    [defaultColDef]="defaultColDef"></ag-grid-angular>
 </div>
 
 <div class="buttons m-4 text-center">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        (click)="createExcelFromJSON(rowData,'rulesFormattedValidation.xlsx')">
-        Download Data
-    </button>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    (click)="createExcelFromJSON(rowData, 'rulesFormattedValidation.xlsx')">
+    Download Data
+  </button>
 </div>
-
-<h1
-    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-    Table Level 2
-</h1>
-
-<h1
-    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-    Table Level 3
-</h1>
-
