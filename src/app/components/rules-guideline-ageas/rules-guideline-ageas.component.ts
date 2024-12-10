@@ -110,7 +110,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'if (true) Value of [column(s)] to be between 0 and 1 (included)',
-    '19.2 / 653.00 / 349.00 / 359.00 \n19.10 / 271.00 / 237.00* / 382.03 / 383.13 / 550.00 / 561.10* / 561.20* / 568.00 / 569.00 / 577.00* / 648.00 / 650.00 \n360.10 / 310.00 / 311.00 / 315.00 / 347.00 / 548.00 / 549.00 / 551.00 / 552.00** / 554.00** / 556.00 / 557.00** / 558.00**',
+    '19.2 / 653.00 / 318.02 / 349.00 / 359.00 \n19.10 / 271.00 / 237.00* / 382.03 / 383.13 / 550.00 / 561.10* / 561.20* / 568.00 / 569.00 / 577.00* / 648.00 / 650.00 \n360.10 / 310.00 / 311.00 / 315.00 / 347.00 / 548.00 / 549.00 / 551.00 / 552.00** / 554.00** / 556.00 / 557.00** / 558.00**',
     '* means Empty equals to 0 \n** means "else, it is -1 or -100% \nCondition is Optional \n All columns are floating number, aka % based ',
   ),
   new RuleDB(
@@ -123,14 +123,8 @@ export const data = [
   new RuleDB(
     'SQL\n.NET',
     'if(true) Value of %columnName% should be equal or higher than %variable%',
-    '284.00 / 295.00* / 305.00* / 315.20 / 318.01 / 347.01 / 356.00 / 356.02 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / / 669.00(?) / 278.00² / 279.00² / 281.00² / 378.00²(?) / 385.05³',
-    'Should create the constraint in sql and also code in .NET, easy to do \n* means cannot be empty \nNeed more info for the rule 378 !!',
-  ),
-  new RuleDB(
-    '.NET',
-    'if (true) then value should be positive',
-    '260.70 / 337.00 / 382.01 / 382.02 / 519.00* / 539.00** / 588.00** / 589.00 / 659.00 / 315.10³ / 548.00³ / 553.00**³',
-    'Condition optional - Can probably fuse it with "Higher than X rule" , Num 11 \n* Cannot be blank \n** can be 0',
+    '284.00 / 295.00* / 305.00* / 315.20 / 318.01 / 347.01 / 356.00 / 356.02 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / / 669.00(?) / 278.00² / 279.00² / 281.00² / 378.00²(?) / 385.05³ \n260.70 / 337.00 / 382.01 / 382.02 / 519.00* / 539.00** / 588.00** / 589.00 / 659.00 / 315.10³ / 548.00³ / 553.00**³ / 574.00**** ',
+    'Should create the constraint in sql and also code in .NET, easy to do \n* means cannot be empty \nNeed more info for the rule 378 !! \n** can be 0 \n**** means else, the allowed value is 0',
   ),
   new RuleDB(
     '.NET',
@@ -159,7 +153,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'if (true) , then the table should have  [lines] from %columnName%',
-    '15.10 / 15,20 / 84.20 / 207.00 / 260.20 / 267.20 / 267.25 / 369.10 / 535.00 / 533.00',
+    '15.10 / 15,20 / 84.20 / 207.00 / 260.20 / 267.20 / 267.25 / 369.10 / 535.00 / 533.00 / 113.20(?)³',
     'Means that the table should have speficic rows of data where [lines] are the unique items',
   ),
   new RuleDB(
@@ -171,23 +165,22 @@ export const data = [
   new RuleDB(
     '.NET',
     'Names and order consistency between two sheets/table',
-    '66.10 / 66.30 / 636.00* / 66.20³',
-    'Would like more info or examples to make I understand \n* Only names need to be present in another table.',
+    '66.10 / 66.30 / 66.20³',
+    'Would like more info or examples to make I understand',
   ),
-  new RuleDB('.NET', 'Specific , Consistency between sheet/columns', '265.00 / 537.00 / 318.02', ''),
+  new RuleDB(
+    '.NET',
+    'Consistency between sheet/columns',
+    '265.00 / 537.00 \n4.00³ / 7.10³ / 7.20³ / 93.00³ / 235.00³ / 246.00³ / 272.00³ / 273.40³ / 594.00³ / 375.00³',
+    'For example, in table 1 , if row 1 has X and Y values, if they happen to exist in table 2, they should have the same values',
+  ),
   new RuleDB(
     '.NET',
     'Existence check',
-    '13.00³ / 17.00³ / 257.10³ / 257.20³ / 257.30*³ / 257.50³ / 592.00³',
-    'Means that if value from table 1 exist, they should exist in table \n* means the model also has to be same ',
+    '13.00³ / 17.00³ / 257.10³ / 257.20³ / 257.30*³/ 257.40³ / 257.50³ / 592.00³ / 636.00',
+    'Means that if value from table 1 exist, they should exist in table 2\n* means the model also has to be same ',
   ),
   new RuleDB('.NET', 'One to One relationship check', '250.00 / 250.01', ''),
-  new RuleDB(
-    '.NET',
-    'All Unique values from %table1% should also exist in %table2% in %columnName%',
-    '254.70',
-    'I will need to check with the rule of the first table',
-  ),
   new RuleDB(
     '.NET',
     'Consistency between linked account',
@@ -195,12 +188,6 @@ export const data = [
     'each DMMP Model can only have one different investment pool',
   ),
   new RuleDB('.NET', 'if(true) must have a linked account', '374.00', ''),
-  new RuleDB(
-    '.NET',
-    'Consistency Check / Matching values',
-    '4.00³ / 7.10³ / 7.20³ / 93.00³ / 113.20³ / 235.00³ / 246.00³ / 272.00³ / 273.40³ / 594.00³',
-    'Might need different rules for each',
-  ),
   new RuleDB('.NET', 'Value of %column1% or value of %column2% has to equal to 0', '645.00', ''),
   new RuleDB('.NET', 'if(true) Value of %column1% should be between value of %column2% and 1', '382.05 / 382.06', ''),
   new RuleDB(
@@ -225,13 +212,13 @@ export const data = [
   new RuleDB(
     '.NET',
     'In Equity Indices, if "Initial asset mix" or "Target asset mix", IDX_?_FSIR 1 TO 5, if one of them is different than 0 or blank , then the sum of [Rows] should be 100% or 1',
-    '15.30',
-    'You check the index from 1 to 5, it has to be different than 0 or blank, and then you need to calculate the ROWS concerned together.',
+    '15.30 /  654.00*',
+    'You check the index from 1 to 5, it has to be different than 0 or blank, and then you need to calculate the ROWS concerned together. \n* means another condition',
   ),
   new RuleDB(
     '.NET',
     'If (APCF_TP does not equal to "SURPLUS INVESTMENT ASSETS LIFE" or "SURPLUS INVESTMENT ASSETS NON LIFE" ) AND (ACPF_RL equals to "Fixed Rate Bond Principle run-off", "Mortgage Principle run-off" or "Fixed Rate Coupon (by maturity)") then the sum of Year 0 cash flow should be >=0 ',
-    '30.00',
+    '30.00 ',
     'Specific. The Sum of all vertical value where the condition is true only.',
   ),
   new RuleDB(
@@ -255,20 +242,14 @@ export const data = [
   new RuleDB('.NET', 'if(true) then value of %columnName% should be 0 or blank', '236.00', ''),
   new RuleDB(
     '.NET',
-    'Super specific',
-    '78.10 / 359.01 / 590.00(a) / 375.00 / 638.00 / 656.00(a)',
-    'Will check again later \n(a) means they are similar \nFor 590, if some value = 1 , then  some value of column will equal base + another column will eual something else depending on the the value being present in Model point conv or UL. WIll change soon, just for to remember. I need to single them out',
-  ),
-  new RuleDB(
-    '.NET',
-    'Super specific',
-    '26.00 / 100.30 / 574.00 / 654.00 / 671.00',
-    'Will check again later. \nThe rule 654 looks a lot like 30.00',
+    'if(true) then AP_TAMFI > 0 , AP_ACM and AP_ACB cannot be zero together , AP_MVM and AP_MVB cannot be zero together',
+    '26.00',
+    '',
   ),
   new RuleDB(
     '???',
-    'Me no understando',
-    '205.10 / 222.10 / 230.00 / 239.00 / 306.00 / 309.00 / 316.00 / 317.00 / 595.00 -> 634.00 / 651.00 / 652.00 / 227.00 / 239.00 / 657.00 / 658.00 \n25.00 / 44.00 / 211.00(wtf) / 260.30 / 335.02 / 336.02 / 664.00 / 534.00 \n24.00 / 182.20 / 248.00 / 270.10 / 527.00 / 578.00',
+    'I do not understand. I need an example from mohammed',
+    '205.10 / 222.10 / 230.00 / 239.00 / 306.00 / 309.00 / 316.00 / 317.00 / 595.00 -> 634.00 / 651.00 / 652.00 / 227.00 / 239.00 / 657.00 / 658.00 \n25.00 / 44.00 / 211.00(wtf) / 260.30 / 335.02 / 336.02 / 664.00 / 534.00 \n24.00 / 182.20 / 248.00 / 270.10 / 527.00 / 578.00 / 78.10 / 359.01 / 590.00(a) / 638.00 / 656.00(a) \n100.30 / 671.00 ',
     'Need more info',
   ),
   new RuleDB('???', 'c# Method ???', '365.00 / 379.00 ->  386.02 ', 'Need more info'),
