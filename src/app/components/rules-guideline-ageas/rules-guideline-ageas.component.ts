@@ -85,20 +85,20 @@ export const data = [
   new RuleDB('SQL', 'Value can be empty', 'General Rule', 'NULL is allowed'),
   new RuleDB(
     '.NET',
-    'if (true) , then value of [columns] should not be empty',
-    '18,00² / 229.00² / 230.00 / 356.12² / 356.11² / 366.00² / 368.20² / 383.21² / 505.00² / 564.00² / 591.00² / 260.40³ / 260.50³ / 593.00³',
+    'if (true) , then value of [columns] cannot be empty',
+    '18,00² / 229.00² / 230.00 / 356.12² / 356.11² / 366.00² / 368.20² / 383.21² / 505.00² / 564.00² / 591.00² / 260.40³ / 260.50³ / 593.00³ / 519.00',
     '[Columns] could be 1 or multiple. ',
   ),
   new RuleDB(
     '.NET',
     'if(true) then value of %columnName% should be empty ',
-    '238.00 / 365.01 ',
+    '238.00 / 365.01 / 356.00',
     'Again, Condition is optional',
   ),
   new RuleDB(
     'SQL',
     'All values of %columnName% should be unique',
-    '50.00² / 234.20 / 244.00 / 317.00 / 528.00 / 529.00² / 314.10²',
+    '50.00² / 234.20 / 244.00 / 317.00 / 528.00 / 529.00² / 314.00² / 578.00',
     'Either one or combination of multiple columns',
   ),
   new RuleDB(
@@ -110,26 +110,26 @@ export const data = [
   new RuleDB(
     '.NET',
     'if (true) Value of [column(s)] to be between 0 and 1 (included)',
-    '19.2 / 239.00 / 653.00 / 318.02 / 652.00 \n19.10 / 271.00 / 237.00* / 286.00* / 349.00 / 359.00 / 382.03 / 383.13 / 550.00 / 561.10* / 561.20* / 568.00 / 569.00 / 577.00* /  635.00 / 648.00 / 650.00 \n360.10 / 310.00 / 311.00 / 315.00 / 347.00 / 549.00 / 551.00 / 552.00** / 554.00** / 556.00 / 557.00** / 558.00**',
+    '19.2 / 239.00 / 653.00 / 318.02 / 652.00 \n19.10 / 271.00 / 237.00* / 286.00* / 349.00 / 359.00 / 382.03 / 383.13 / 550.00 / 561.10* / 561.20* / 568.00 / 569.00 / 577.00* /  635.00 / 648.00 / 650.00 \n360.10 / 310.00 / 311.00 / 315.00 / 347.00 / 549.00 / 551.00 / 552.00** / 554.00** / 556.00 / 557.00** / 558.00** / 527.00 / 350.00 / 356.00',
     '* means Empty equals to 0 \n** means "else, it is -1 or -100% \nCondition is Optional \n All columns are floating number, aka % based ',
   ),
   new RuleDB(
     '.NET',
     'if (true) Value of %columnName% should be a value of [RangesOfValue]',
-    '142.00 / 156.00 / 222.20 / 227.00 / 232.00 / 234.10 / 234.20 / 273.10 / 282.01 -> 282.18 / 285.00* / 290.00 -> 292.00 / 304.00 / 335.01 / 356.17 / 361.00 / 361.10 / 361.20 / 369.20* / 410.00* / 502.00 / 503.00 / 522.00 / 523.00/ 542.00* / 543.01* / 544.00* / 545.00* / 546.00* / 580.00* / 646.00* / 647.00* / 667.00 / 668.00 / 670.00* \n51.10 / 51.20 / 231.00 / 262.00 / 264.00 / 269.00 / 275.00* / 276.00* / 276.10* / 280.00* / 287.00 / 289.00 / 335.02 / 336.02 / 356.07 / 356.12 / 376.00 / 383.09* / 383.16 / 524.00 / 525.00 / 541.00* / 575.00 / 665.00 \n223.00 / 258.10 / 258.20 / 270.20 / 383.01 / 383.07 / 540.00 / 571.00 / 572.00 / 573.00 / 579.00',
+    '142.00 / 156.00 / 222.20 / 227.00 / 232.00 / 234.10 / 234.20 / 273.10 / 282.01 -> 282.18 / 285.00* / 290.00 -> 292.00 / 304.00 / 335.01 / 356.17 / 361.00 / 361.10 / 361.20 / 369.20* / 410.00* / 502.00 / 503.00 / 522.00 / 523.00/ 542.00* / 543.01* / 544.00* / 545.00* / 546.00* / 580.00* / 646.00* / 647.00* / 667.00 / 668.00 / 670.00* \n51.10 / 51.20 / 231.00 / 262.00 / 264.00 / 269.00 / 275.00* / 276.00* / 276.10* / 280.00* / 287.00 / 289.00 / 335.02 / 336.02 / 356.07 / 356.12 / 376.00 / 383.09* / 383.16 / 524.00 / 525.00 / 541.00* / 575.00 / 665.00 \n223.00 / 258.10 / 258.20 / 270.20 / 383.01 / 383.07 / 540.00 / 571.00 / 572.00 / 573.00 / 579.00 / 330.00 / 545.00',
     '* are for checks that only accept 0 or 1 , should we make a different rule for that ? Should we make a rule also for when RangeOfValue can only contain 1 value ? such as 282.18  that only accepts 10 or left blank',
   ),
   new RuleDB(
     '.NET',
     'If value of %columnName1% is %variable1% then value of %columnName2% should be %variable2%',
-    '7.40 / 7.50 / 368.20 / 383.12 / 563.00 / 566.00 / 567.00 / 7.30 / 372.00',
+    '7.40 / 7.50 / 368.20 / 383.12 / 563.00 / 566.00 / 567.00 / 7.30 / 372.00 / 270.10 / 356.02',
     'ColumnsNames could come from different tables. Similar to the previous rule but with only 1 value allowed. Condition is optional',
   ),
   new RuleDB('.NET', 'LEI Code Check', '517.00 / 518.00 / 521.00 / 526.00* / 520.00² / 534.00² / 666.00', '* Cannot be empty'),
   new RuleDB(
     'SQL\n.NET',
     'if(true) Value of %columnName% should be equal or higher than %variable%',
-    '284.00 / 295.00* / 305.00* / 315.20 / 318.01 / 347.01 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 669.00(?) / 278.00² / 279.00² / 281.00² / 378.00²(?) / 385.05³ \n260.70 / 337.00 / 382.01 / 382.02 / 383.22 / 519.00*(?) / 539.00** / 588.00** / 589.00 / 659.00 \n315.10³ / 548.00³ / 553.00**³ / 574.00**** / 596.00 -> 634.00',
+    '284.00 / 295.00* / 305.00* / 315.20 / 318.01 / 347.01 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 669.00(?) / 278.00² / 279.00² / 281.00² / 378.00²(?) / 385.05³ \n260.70 / 337.00 / 382.01 / 382.02 / 383.22 / 539.00** / 588.00** / 589.00 / 659.00 \n315.10³ / 548.00³ / 553.00**³ / 574.00**** / 596.00 -> 634.00 / 306.00 / 671.00 / 669.00',
     '* means cannot be empty \nNeed more info for the rule 378 !! \n** can be 0 \n**** means else, the allowed value is 0',
   ),
   new RuleDB(
@@ -147,8 +147,8 @@ export const data = [
   new RuleDB(
     '.NET',
     'if(true) then values of [column] should be between -100% and 0% or blank',
-    '277.10 / 277.20 / 277.30',
-    'Did I understand correctly',
+    '277.10 / 277.20 / 277.30 / 359.01',
+    'Did I understand correctly \n* Means that else, it would be between -(%variable1%) and 0 (ex : between -0.4 and 0) where 0.4 would come from a column',
   ),
   new RuleDB(
     '.NET',
@@ -171,8 +171,8 @@ export const data = [
   new RuleDB(
     '.NET',
     'Consistency between sheet/columns',
-    '265.00 / 537.00 \n4.00³ / 7.10³ / 7.20³ / 93.00³ / 235.00³ / 246.00³ / 272.00³ / 273.40³ / 594.00³ / 375.00³',
-    'For example, in table 1 , if row 1 has X and Y values, if they happen to exist in table 2, they should have the same values',
+    '265.00 / 537.00 \n4.00³ / 7.10³ / 7.20³ / 93.00³ / 235.00³ / 246.00³ / 272.00³ / 273.40³ / 594.00³ / 375.00³ / 248.00*',
+    'For example, in table 1 , if row 1 has X and Y values, if they happen to exist in table 2, they should have the same values \n* if a model has the same asset pool, then their marings and timing of cash flows should be the same',
   ),
   new RuleDB(
     '.NET',
@@ -212,7 +212,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'In Equity Indices, if "Initial asset mix" or "Target asset mix", IDX_?_FSIR 1 TO 5, if one of them is different than 0 or blank , then the sum of [Rows] should be 100% or 1',
-    '15.30 /  654.00*',
+    '15.30 /  654.00* / 656.00*',
     'You check the index from 1 to 5, it has to be different than 0 or blank, and then you need to calculate the ROWS concerned together. \n* means another condition',
   ),
   new RuleDB(
@@ -254,23 +254,28 @@ export const data = [
     '',
   ),
   new RuleDB(
+    '.NET',
+    'if(true)value of %columnName1% should be between 0 and 1 or else it should be between negative value of %columnName2% and 0',
+    '359',
+    '',
+  ),
+  new RuleDB(
+    '.NET',
+    'if(true) then all values below year 49 has to be lower',
+    '638.00',
+    '',
+  ),
+  new RuleDB(
     '???',
     'I do not understand. I need an example from mohammed',
-    '205.10(w) / 222.10(w) / 306.00(w) / 658.00(w) \n260.30(w) \n24.00 / 182.20 / 248.00 / 270.10 / 527.00 / 578.00 / 78.10 / 359.01 / 590.00(a) / 638.00 / 656.00(a) \n100.30 / 671.00 ',
-    'Need more info \n (w) means mohammed still need info from IT',
+    '205.10(w) / 222.10(w) / 306.00(w) / 658.00(w) \n260.30(w) \n24.00(w) / 182.20(w) / 78.10(w) / 359.01(ok)/ 590.00(a) \n100.30(w)',
+    'Need more info \n (w) means I need to wait for mohammed',
   ),
   new RuleDB('???', 'c# Method ???', '365.00 / 379.00 ->  386.02 ', 'Need more info'),
   new RuleDB(
     '???',
-    'Two different meaning between description and criteria',
-    '350.0 / 356.00(?) / 356.02(?) ',
-    'will check with mohammed ',
-  ),
-  new RuleDB('???', 'No specific rules written', '545.10 / 359.00²', 'Could be just data type'),
-  new RuleDB(
-    '???',
     'Redundant, can be ignored',
-    '273.20 / 316.00(only string) / 570.00³ / 530.00 / 595.00 (floating number only pos or neg) / 651.00(all columns floating) / 25.00(sql will not round it)',
+    '273.20 / 316.00(only string) / 570.00³ / 530.00 / 595.00 (floating number only pos or neg) / 651.00(all columns floating) / 25.00 and 24(sql will not round it)',
     'Foreign key should work automatically in SQL',
   ),
 ];
