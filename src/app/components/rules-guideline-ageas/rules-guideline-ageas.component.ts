@@ -86,7 +86,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'if (true) , then value of [columns] cannot be empty',
-    '18,00² / 229.00² / 230.00 / 356.12² / 356.11² / 366.00² / 368.20² / 383.21² / 505.00² / 564.00² / 591.00² / 260.40³ / 260.50³ / 593.00³ / 519.00',
+    '18,00² / 229.00² / 230.00 / 356.12² / 356.11² / 366.00² / 368.20² / 383.21² / 505.00² / 564.00² / 591.00² / 260.40³ / 260.50³ / 593.00³ / 519.00 / 182.20',
     '[Columns] could be 1 or multiple. ',
   ),
   new RuleDB(
@@ -129,7 +129,7 @@ export const data = [
   new RuleDB(
     'SQL\n.NET',
     'if(true) Value of %columnName% should be equal or higher than %variable%',
-    '284.00 / 295.00* / 305.00* / 315.20 / 318.01 / 347.01 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 669.00(?) / 278.00² / 279.00² / 281.00² / 378.00²(?) / 385.05³ \n260.70 / 337.00 / 382.01 / 382.02 / 383.22 / 539.00** / 588.00** / 589.00 / 659.00 \n315.10³ / 548.00³ / 553.00**³ / 574.00**** / 596.00 -> 634.00 / 306.00 / 671.00 / 669.00',
+    '284.00 / 295.00* / 305.00* / 315.20 / 318.01 / 347.01 / 360.03 / 500.00 / 501.00 / 515.00 / 516.00 / 639.00 / 640.00 / 641.00 / 642.00 / 643.00 / 644.00 / 660.00 / 661.00 / 662.00 / 663.00 / 669.00(?) / 278.00² / 279.00² / 281.00² / 378.00²(?) / 385.05³ \n260.70 / 337.00 / 382.01 / 382.02 / 383.22 / 539.00** / 588.00** / 589.00 / 659.00 \n315.10³ / 548.00³ / 553.00**³ / 574.00**** / 596.00 -> 634.00 / 306.00 / 671.00 / 669.00 / 306.00** / 260.30',
     '* means cannot be empty \nNeed more info for the rule 378 !! \n** can be 0 \n**** means else, the allowed value is 0',
   ),
   new RuleDB(
@@ -141,7 +141,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'If (true) then value of %columnName% should be smaller or equal to %variable%',
-    '209.00 / 210.00',
+    '209.00 / 210.00 / 100.30',
     '',
   ),
   new RuleDB(
@@ -159,7 +159,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'if (true) , then the table should have  [lines] from %columnName%',
-    '15.10 / 15,20 / 44.00 / 84.20 / 207.00 / 260.20 / 267.20 / 267.25 / 369.10* / 535.00 \n533.00 / 113.20(?)*³',
+    '15.10 / 15,20 / 44.00 / 84.20 / 207.00 / 260.20 / 267.20 / 267.25 / 369.10* / 535.00 \n533.00 / 113.20(?)*³ / 205.10 / 222.10',
     'Means that the table should have speficic rows of data where [lines] are the unique items \n* should be put in the "exist" rule ?',
   ),
   new RuleDB(
@@ -266,9 +266,15 @@ export const data = [
     '',
   ),
   new RuleDB(
+    '.NET',
+    'Super specific , will need to read it fully',
+    '590',
+    'Check the rule itself in the documentation',
+  ),
+  new RuleDB(
     '???',
     'I do not understand. I need an example from mohammed',
-    '205.10(w) / 222.10(w) / 306.00(w) / 658.00(w) \n260.30(w) \n24.00(w) / 182.20(w) / 78.10(w) / 359.01(ok)/ 590.00(a) \n100.30(w)',
+    '658.00(w) \n  78.10(w)',
     'Need more info \n (w) means I need to wait for mohammed',
   ),
   new RuleDB('???', 'c# Method ???', '365.00 / 379.00 ->  386.02 ', 'Need more info'),
