@@ -199,6 +199,12 @@ export const data = [
     '559.00 / 560.00',
     '',
   ),
+  new RuleDB(
+    '.NET',
+    'A number of the columns with header of "%variable%" should be listed in the %variable2%.',
+    '380.01 / 380.02 / 380.03 / 380.04 / 380.05 / 380.06 / 380.07 / 380.08 / 380.09 / 380.10',
+    'Check the rule itself in the documentation',
+  ),
   new RuleDB('.NET', 'Value of %columnName1% should be between 0 and value of %columnName2%', '359.00', ''),
   new RuleDB(
     '.NET',
@@ -280,12 +286,6 @@ export const data = [
 ElseIf ((Year value = 0 for year 1 to 50 for all rows where rowLabel = "Fixed Rate Bond Principle run-off" or FloatingRateBondPrincipleRunOff) and (Year value = 0 for year 1 to 50 for all rows where rowlabel = FixedRateCouponByMaturity) and (marketValue = bookValue) and (yearZeros = bookValue )) Then: "There is only cash for asset pool ‘assetPool’ and fixed income index name ‘fixedIncomeIndexName’ but the market value is not equal to the book value."`,
     '78.10',
     'Will need to work on it when trying to implement it',
-  ),
-  new RuleDB(
-    '.NET',
-    'A number of the columns with header of "%variable%" should be listed in the %variable2%.',
-    '380.01 -> 380.10',
-    'Check the rule itself in the documentation',
   ),
   new RuleDB(
     '???',
