@@ -151,7 +151,7 @@ export const data = [
   new RuleDB(
     '.NET',
     'if(true) then values of [column] should be between -100% and 0% or blank',
-    '277.10 / 277.20 / 277.30 / 359.01',
+    '277.10 / 277.20 / 277.30 / 359.01*',
     'Did I understand correctly \n* Means that else, it would be between -(%variable1%) and 0 (ex : between -0.4 and 0) where 0.4 would come from a column',
   ),
   new RuleDB(
