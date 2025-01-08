@@ -210,9 +210,9 @@ export const data = [
     '.NET',
     'IF value of %columnName% == %variable% then Sum of [Columns] to be between 0 and 100 % (included)',
     '16.2',
-    'Super Specific',
+    '',
   ),
-  new RuleDB('.NET', 'Value of column between 0.9 and 1', '309.00', 'Super Specific'),
+  new RuleDB('.NET', 'Value of column between 0.9 and 1', '309.00', ''),
   new RuleDB(
     '.NET',
     'In Equity Indices, if "Initial asset mix" or "Target asset mix", IDX_?_FSIR 1 TO 5, if one of them is different than 0 or blank , then the sum of [Rows] should be 100% or 1',
@@ -233,9 +233,9 @@ export const data = [
   ),
   new RuleDB(
     '.NET',
-    'Super specific',
-    '211.00',
     'if the line with technical provision at any year is lower than X, what comes after must be zero , including all those [lines] for example, if the line with technical provision, at year 10 has less than 0.01 , then all the year that follows must be 0 BUT ALSO the other items , must also equals to 0 starting from the same hyear as the line with provision',
+    '211.00',
+    '',
   ),
 
   new RuleDB(
