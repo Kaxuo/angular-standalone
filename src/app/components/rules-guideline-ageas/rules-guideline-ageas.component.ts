@@ -64,7 +64,6 @@ export class RuleDB {
     this.system = system;
     this.rules = rules;
     this.id = id;
-
     this.comment = comment;
   }
 }
@@ -125,7 +124,12 @@ export const data = [
     '7.40 / 7.50 / 368.20 / 383.12 / 563.00 / 566.00 / 567.00 / 7.30 / 372.00 / 270.10 / 356.02',
     'ColumnsNames could come from different tables. Similar to the previous rule but with only 1 value allowed. Condition is optional',
   ),
-  new RuleDB('.NET', 'LEI Code Check', '517.00 / 518.00 / 521.00 / 526.00* / 520.00² / 534.00² / 666.00', '* Cannot be empty'),
+  new RuleDB(
+    '.NET',
+    'LEI Code Check',
+    '517.00 / 518.00 / 521.00 / 526.00* / 520.00² / 534.00² / 666.00',
+    '* Cannot be empty',
+  ),
   new RuleDB(
     'SQL\n.NET',
     'if(true) Value of %columnName% should be equal or higher than %variable%',
@@ -166,12 +170,12 @@ export const data = [
     '.NET',
     'Names and order consistency between two sheets/table',
     '66.10 / 66.30 / 66.20³',
-    'Would like more info or examples to make I understand',
+    'Maybe need more info or examples to make I understand',
   ),
   new RuleDB(
     '.NET',
     'Consistency between sheet/columns',
-    '265.00 / 537.00 \n4.00³ / 7.10³ / 7.20³ / 93.00³ / 235.00³ / 246.00³ / 272.00³ / 273.40³ / 594.00³ / 375.00³ / 248.00*',
+    '265.00 / 537.00 \n4.00³ / 7.10³ / 7.20³ / 93.00³ / 235.00³ / 246.00³ / 272.00³ / 273.40³ / 594.00³ / 375.00³ / 248.00* / 386.02',
     'For example, in table 1 , if row 1 has X and Y values, if they happen to exist in table 2, they should have the same values \n* if a model has the same asset pool, then their marings and timing of cash flows should be the same',
   ),
   new RuleDB(
@@ -246,7 +250,7 @@ export const data = [
   new RuleDB('.NET', 'Minimum 1 letter', '274.00', ''),
   new RuleDB('.NET', 'Sum of [columns] equals to [columns]', '39.00', ''),
   new RuleDB('.NET', 'Value should be between 0 and 50 (included)', '547.00', ''),
-  new RuleDB('.NET', 'if(true) then value of %columnName% should be 0 or blank', '236.00', ''),
+  new RuleDB('.NET', 'if(true) then value of %columnName% should be 0 or blank', '236.00 / 365.00', ''),
   new RuleDB(
     '.NET',
     'if(true) then AP_TAMFI > 0 , AP_ACM and AP_ACB cannot be zero together , AP_MVM and AP_MVB cannot be zero together',
@@ -259,12 +263,7 @@ export const data = [
     '359',
     '',
   ),
-  new RuleDB(
-    '.NET',
-    'if(true) then all values below year 49 has to be lower',
-    '638.00',
-    '',
-  ),
+  new RuleDB('.NET', 'if(true) then all values below year 49 has to be lower', '638.00', ''),
   new RuleDB(
     '.NET',
     'Super specific , will need to read it fully',
@@ -272,16 +271,26 @@ export const data = [
     'Check the rule itself in the documentation',
   ),
   new RuleDB(
-    '???',
-    'I do not understand. I need an example from mohammed',
-    '658.00(w) \n  78.10(w)',
-    'Need more info \n (w) means I need to wait for mohammed',
+    '.NET',
+    `Super specific , will need to read it fully : For each combination of assetPool (APCF_AP) and fixedIncomeIndexName (APCF_FIIN):
+1. bookValue = sum(APCF_ACMV_FSIR for all rows where rowLabel = "Fixed Rate Bond Principle run-off" or FloatingRateBondPrincipleRunOff) 
+2. yearZeros = sum(YEAR_0 for all rows where rowLabel = "Fixed Rate Bond Principle run-off" or FloatingRateBondPrincipleRunOff)
+3. marketValue = sum(APCF_ACMV_FSIR for all rows where rowLabel = FixedRateCouponByMaturity) %% Market value
+4. If (marketValue = 0 and bookValue != 0) Then: “The row label "Fixed Rate Coupon (by maturity)" was not found or was equal to zero for asset pool ‘assetPool’ and fixed income index name ‘fixedIncomeIndexName’.”
+ElseIf ((Year value = 0 for year 1 to 50 for all rows where rowLabel = "Fixed Rate Bond Principle run-off" or FloatingRateBondPrincipleRunOff) and (Year value = 0 for year 1 to 50 for all rows where rowlabel = FixedRateCouponByMaturity) and (marketValue = bookValue) and (yearZeros = bookValue )) Then: "There is only cash for asset pool ‘assetPool’ and fixed income index name ‘fixedIncomeIndexName’ but the market value is not equal to the book value."`,
+    '78.10',
+    'Will need to work on it when trying to implement it',
   ),
-  new RuleDB('???', 'c# Method ???', '365.00 / 379.00 ->  386.02 ', 'Need more info'),
+  new RuleDB(
+    '.NET',
+    'A number of the columns with header of "%variable%" should be listed in the %variable2%.',
+    '380.01 -> 380.10',
+    'Check the rule itself in the documentation',
+  ),
   new RuleDB(
     '???',
     'Redundant, can be ignored',
-    '273.20 / 316.00(only string) / 570.00³ / 530.00 / 595.00 (floating number only pos or neg) / 651.00(all columns floating) / 25.00 and 24(sql will not round it)',
+    '273.20 / 316.00(only string) / 570.00³ / 530.00 / 595.00 (floating number only pos or neg) / 651.00(all columns floating) / 25.00 and 24(sql will not round it), 379.00 ( should be a numeric value ) ,',
     'Foreign key should work automatically in SQL',
   ),
 ];
